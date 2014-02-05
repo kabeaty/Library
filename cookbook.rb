@@ -21,9 +21,13 @@ class Cookbook
 
   def print_cookbook
     @recipes.each do |recipe|
+      counter = 1
       puts "Recipe: #{recipe.title}"
       puts "Ingredients: #{recipe.ingredients.join(", ")}"
-      puts "Steps: #{recipe.steps.join(", ")}"
+      recipe.steps.each do |step|
+        puts "#{counter.to_i}. #{step}"
+        counter += 1
+        end
     end
   end
 
