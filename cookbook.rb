@@ -1,9 +1,10 @@
 class Cookbook
-  attr_accessor :title, :recipes
+  attr_accessor :title, :recipes, :author
 
-  def initialize(title)
+  def initialize(title, author)
     @title = title
     @recipes = []
+    @author = author
   end
 
   def add_recipe(recipe)
@@ -20,6 +21,8 @@ class Cookbook
   end
 
   def print_cookbook
+      puts "Cookbook Title: #{title}"
+      puts "Author: #{author}"
     @recipes.each do |recipe|
       counter = 1
       puts "Recipe: #{recipe.title}"
