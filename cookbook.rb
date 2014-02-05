@@ -11,6 +11,14 @@ class Cookbook
     puts "Added a recipe to the collection: #{recipe.title}"
   end
 
+  def recipe_titles
+    @recipes.each { |recipe| puts "#{recipe.title}" }
+  end
+
+  def recipe_ingredients
+    @recipes.each { |recipe| puts "These are the ingredients for #{recipe.title}: #{recipe.ingredients.join(", ")}" }
+  end
+
 end
 
 class Recipe
@@ -22,6 +30,10 @@ class Recipe
     @title = title
     @ingredients = ingredients
     @steps = steps
+  end
+
+  def print_recipe
+    puts "To make #{title}, use #{ingredients.join(", ")}, and follow these steps: #{steps.join(", ")}"
   end
 
 end
