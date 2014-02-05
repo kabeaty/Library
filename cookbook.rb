@@ -48,6 +48,15 @@ class Recipe
     puts "To make #{title}, use #{ingredients.join(", ")}, and follow these steps: #{steps.join(", ")}"
   end
 
+  def number_ingredients
+    puts "It takes #{ingredients.length} ingredients to make #{title}."
+    if ingredients.length <= 3
+      puts "This is a simple recipe."
+    else
+      puts "This recipe requires some preparation."
+    end
+  end
+
 end
 
 
