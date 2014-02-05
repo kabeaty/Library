@@ -19,6 +19,14 @@ class Cookbook
     @recipes.each { |recipe| puts "These are the ingredients for #{recipe.title}: #{recipe.ingredients.join(", ")}" }
   end
 
+  def print_cookbook
+    @recipes.each do |recipe|
+      puts "Recipe: #{recipe.title}"
+      puts "Ingredients: #{recipe.ingredients.join(", ")}"
+      puts "Steps: #{recipe.steps.join(", ")}"
+    end
+  end
+
 end
 
 class Recipe
