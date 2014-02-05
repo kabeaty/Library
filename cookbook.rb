@@ -8,6 +8,7 @@ class Cookbook
 
   def add_recipe(recipe)
     @recipes.push(recipe)
+    puts "Added a recipe to the collection: #{recipe.title}"
   end
 
 end
