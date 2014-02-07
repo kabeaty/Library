@@ -2,12 +2,13 @@
 # Don't forget about getters and setters
 
 class Book
-  attr_reader :author, :title, :id
+  attr_reader :author, :title, :id, :status
 
-  def initialize(title, author, id = [])
+  def initialize(title, author, id = nil, status = 'available')
     @title = title
     @author = author
-    @id
+    @id = id
+    @status = status
   end
 end
 
