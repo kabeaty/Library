@@ -2,8 +2,8 @@
 # Don't forget about getters and setters
 
 class Book
-  attr_reader :author, :title, :id
-  attr_accessor :status
+  attr_reader :author, :title
+  attr_accessor :status, :id
 
   def initialize(title, author, id = nil, status = 'available')
     @title = title
@@ -51,11 +51,11 @@ class Library
     # tip: probably does something similar to @recipes array
   end
 
+  #Register new books in library and give them an id.
   def register_new_book(title, author)
-    counter = 1
-    created_book = Book.new(title, author, id = counter)
+    created_book = Book.new(title, author)
     @books.push(created_book)
-    counter += 1
+    created_book.id = created_book.object_id
   end
 
   def add_book(title, author)
