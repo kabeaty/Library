@@ -2,7 +2,8 @@
 # Don't forget about getters and setters
 
 class Book
-  attr_reader :author, :title, :id, :status
+  attr_reader :author, :title, :id
+  attr_accessor :status
 
   def initialize(title, author, id = nil, status = 'available')
     @title = title
@@ -10,6 +11,11 @@ class Book
     @id = id
     @status = status
   end
+
+  def check_out
+    @status = 'checked_out'
+  end
+
 end
 
 class Borrower
