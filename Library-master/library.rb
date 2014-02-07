@@ -13,7 +13,12 @@ class Book
   end
 
   def check_out
-    @status = 'checked_out'
+    if self.status != 'checked_out'
+      self.status = 'checked_out'
+      true
+    else
+      false
+    end
   end
 
 end
