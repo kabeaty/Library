@@ -21,6 +21,15 @@ class Book
     end
   end
 
+  def check_in
+    if self.status != 'available'
+      self.status = 'available'
+      true
+    else
+      false
+    end
+  end
+
 end
 
 class Borrower
