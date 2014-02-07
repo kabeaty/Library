@@ -12,6 +12,7 @@ class Book
     @status = status
   end
 
+  # Check out books. Return false if check out twice.
   def check_out
     if self.status != 'checked_out'
       self.status = 'checked_out'
@@ -21,6 +22,7 @@ class Book
     end
   end
 
+  #Check in books. Return false if book already checked in.
   def check_in
     if self.status != 'available'
       self.status = 'available'
@@ -33,8 +35,12 @@ class Book
 end
 
 class Borrower
+  attr_reader :name
+
   def initialize(name)
+    @name = name
   end
+
 end
 
 class Library
