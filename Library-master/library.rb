@@ -44,12 +44,18 @@ class Borrower
 end
 
 class Library
-  def initialize(name)
+  attr_accessor :books
+
+  def initialize
     @books = []
     # tip: probably does something similar to @recipes array
   end
 
-  def books
+  def register_new_book(title, author)
+    counter = 1
+    created_book = Book.new(title, author, id = counter)
+    @books.push(created_book)
+    counter += 1
   end
 
   def add_book(title, author)
