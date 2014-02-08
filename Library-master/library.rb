@@ -59,16 +59,17 @@ class Library
     created_book.id = created_book.object_id
   end
 
-  def add_book(title, author)
-  end
-
   #Check out books by ID
   def check_out_book(book_id, borrower)
     @books.each do |book|
       if book_id == book.id
-        book.check_out
-        book.borrower = borrower
-        return book
+        if book.status == 'available'
+          book.check_out
+          book.borrower = borrower
+          return book
+        else
+          return nil
+        end
       end
     end
   end
