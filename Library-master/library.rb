@@ -1,6 +1,3 @@
-
-# Don't forget about getters and setters
-
 class Book
   attr_reader :title, :author
   attr_accessor :status, :id, :borrower
@@ -47,12 +44,12 @@ class Borrower
 end
 
 class Library
-  attr_accessor :books, :available_books
+  attr_accessor :books, :available_books, :borrowed_books
 
   def initialize
     @books = []
     @available_books = []
-    # tip: probably does something similar to @recipes array
+    @borrowed_books = []
   end
 
   #Register new books in library and give them an id.
@@ -77,6 +74,7 @@ class Library
           else
             book.check_out
             @available_books.delete(book)
+            @borrowed_books.push(book)
             return book
           end
         else
@@ -99,9 +97,4 @@ class Library
     book.status = 'available'
   end
 
-  # def available_books
-  # end
-
-  def borrowed_books
-  end
 end
