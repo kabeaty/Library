@@ -37,9 +37,11 @@ end
 
 class Borrower
   attr_reader :name
+  attr_accessor :num_books
 
   def initialize(name)
     @name = name
+    @num_books = 0
   end
 
 end
@@ -59,14 +61,21 @@ class Library
     created_book.id = created_book.object_id
   end
 
-  #Check out books by ID
+  #Check out books by ID. Doesn't let borrower check out more than 2 books at a time.
   def check_out_book(book_id, borrower)
     @books.each do |book|
       if book_id == book.id
         if book.status == 'available'
-          book.check_out
           book.borrower = borrower
-          return book
+          borrower.num_books += 1
+          if borrower.num_books >=3
+            borrower.num_books -= 1
+            book.borrower = nil
+            return nil
+          else
+            book.check_out
+            return book
+          end
         else
           return nil
         end
