@@ -47,10 +47,11 @@ class Borrower
 end
 
 class Library
-  attr_accessor :books
+  attr_accessor :books, :available_books
 
   def initialize
     @books = []
+    @available_books = []
     # tip: probably does something similar to @recipes array
   end
 
@@ -58,6 +59,7 @@ class Library
   def register_new_book(title, author)
     created_book = Book.new(title, author)
     @books.push(created_book)
+    @available_books.push(created_book)
     created_book.id = created_book.object_id
   end
 
@@ -74,6 +76,7 @@ class Library
             return nil
           else
             book.check_out
+            @available_books.delete(book)
             return book
           end
         else
@@ -96,8 +99,8 @@ class Library
     book.status = 'available'
   end
 
-  def available_books
-  end
+  # def available_books
+  # end
 
   def borrowed_books
   end
