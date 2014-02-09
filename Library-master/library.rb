@@ -1,6 +1,6 @@
 class Book
   attr_reader :title, :author
-  attr_accessor :status, :id, :borrower
+  attr_accessor :status, :id, :borrower, :year_published, :edition, :reviews
 
   def initialize(title, author, id = nil, status = 'available')
     @title = title
@@ -8,6 +8,9 @@ class Book
     @id = id
     @status = status
     @borrower = nil
+    @year_published = nil
+    @edition = nil
+    @reviews = []
   end
 
   # Check out books. Return false if check out twice.
@@ -28,6 +31,18 @@ class Book
     else
       false
     end
+  end
+
+  #Borrowers can add reviews to books. Written review optional.
+  def add_review(borrower, rating, written_review = nil)
+      review_info = []
+      review_info.push(borrower.name).push(self.title).push(rating)
+      if written_review != nil
+        review_info.push(written_review)
+        self.reviews.push(review_info)
+      else
+        self.reviews.push(review_info)
+      end
   end
 
 end
