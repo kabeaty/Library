@@ -45,6 +45,18 @@ class Book
       end
   end
 
+  #Borrowers can get reviews for each book with rating and written review.
+  def get_reviews
+    if self.reviews != []
+      self.reviews.each do |review|
+        puts "#{review[0]} gave #{review[1]} a rating of #{review[2]}."
+        if review.length == 4
+          puts "#{review[0]} also said: #{review[3]}"
+        end
+      end
+    end
+  end
+
 end
 
 class Borrower
